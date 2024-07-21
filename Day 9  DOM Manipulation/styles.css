@@ -1,0 +1,14 @@
+.background-color {
+  background-color: green;
+}
+
+.para:hover {
+  cursor: pointer;
+}
+
+.border {
+  width: 455px;
+  height: 200px;
+  background-color: aqua;
+  border: 4px solid sienna;
+}

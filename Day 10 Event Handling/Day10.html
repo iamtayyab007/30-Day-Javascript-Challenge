@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Handling</title>
+  </head>
+  <style>
+    .container {
+      background-color: aqua;
+      width: 550px;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <p class="paragraph">Hi I am paragraph</p>
+    <button class="btn">Change Text</button>
+    <img id="img" src="profile pic 1.PNG" alt="" />
+
+    <div class="container"></div>
+    <input type="text" id="inp" />
+
+    <form id="myForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <p id="form-response"></p>
+
+    <select name="select" id="dropdown">
+      <option value="Option 1">Option 1</option>
+      <option value="Option 2">Option 2</option>
+      <option value="Option 3">Option 3</option>
+      <option value="Option 4">Option 4</option>
+    </select>
+
+    <p class="para1">select values will be displayed here</p>
+
+    <ul id="menu">
+      <li>home</li>
+      <li>about</li>
+      <li>contact</li>
+    </ul>
+    <button id="btn-item">add items</button>
+
+    <script>
+      // Activity 1
+      // Task 1
+
+      const paragraph = document.querySelector(".paragraph");
+      const btn = document.querySelector(".btn");
+
+      btn.addEventListener("click", function () {
+        paragraph.textContent = "The text has been changed";
+      });
+
+      // Task 2
+
+      const img = document.getElementById("img");
+
+      img.addEventListener("dblclick", function () {
+        if (img.style.display === "none") {
+          img.style.display = "block";
+        } else {
+          img.style.display = "none";
+        }
+      });
+
+      // Activity 2
+      // Task 3
+
+      const container = document.querySelector(".container");
+
+      container.addEventListener("mouseover", function () {
+        container.style.backgroundColor = "black";
+      });
+
+      // Task 4
+
+      container.addEventListener("mouseout", function () {
+        container.style.backgroundColor = "";
+      });
+
+      // Activity 3
+
+      // Task 5
+      const input = document.getElementById("inp");
+      inp.addEventListener("keydown", function (e) {
+        console.log(e.key + " is pressed");
+      });
+
+      // Task 6
+
+      input.addEventListener("keyup", function () {
+        paragraph.textContent = `current value: ${input.value}`;
+      });
+
+      //Activity 4
+
+      // Task 7
+
+      const submitBtn = document.getElementById("myForm");
+
+      submitBtn.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const email = document.getElementById("email");
+        const name = document.getElementById("name");
+        const message = document.getElementById("message");
+
+        const formResponse = document.getElementById("form-response");
+
+        formResponse.textContent = `name: ${name.value} and email:${email.value} and message: ${message.value}`;
+      });
+
+      // Task 8
+      const demo = document.querySelector(".para1");
+      const dropdown = document.getElementById("dropdown");
+      dropdown.addEventListener("change", function (e) {
+        demo.textContent = dropdown.value;
+      });
+
+      // Activity 5
+      // Task 9
+
+      const menu = document.getElementById("menu");
+      menu.addEventListener("click", function (e) {
+        if (event.target && event.target.nodeName === "LI") {
+          console.log("List item text:", event.target.textContent);
+        }
+      });
+
+      // Task 10
+      let listItemsCount = 0;
+      function addListItems() {
+        const listItemsCreate = document.createElement("li");
+        listItemsCreate.textContent = `${listItemsCount++}`;
+        menu.appendChild(listItemsCreate);
+      }
+
+      const buttonItem = document.getElementById("btn-item");
+      buttonItem.addEventListener("click", addListItems);
+    </script>
+  </body>
+</html>

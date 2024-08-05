@@ -80,7 +80,7 @@ console.log(Person.genericGreeting());
 }
 
 // Activity 5
-// Task 9
+// Task 9 && 10
 
 class Account {
   #balance;
